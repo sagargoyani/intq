@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <title>Flatten Object to one level</title>
+</head>
+
+<body>
+  <p>convert the given multiple level inner nodes object into the one level object.</p>
+  <p>given example will give the better understanding.</p>
+
+  <pre>Input : 
+    {
+      l1: {
+        l2: {
+          l3: "n1",
+          l4: "n2",
+          l5: "n3",
+        },
+        l6: {
+          l7: {
+            l8: "n4",
+          },
+        },
+        l9: "n5",
+      },
+    }
+  </pre>
+
+  <pre>Output : 
+    {
+      "l1.l2.l3": "n1",
+      "l1.l2.l4": "n2",
+      "l1.l2.l5": "n3",
+      "l1.l6.l7.l8": "n4",
+      "l1.l9": "n5",
+    }
+  </pre>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
