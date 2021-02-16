@@ -10,11 +10,14 @@ function solution(n, u, v, w, c, guestNodes, x, y) {
 
   let minRoute;
 
-  guestNodes = guestNodes.filter((item) => item !== x);
+  guestNodes = guestNodes.filter((item) => !(item === x));
 
   function validateRoute(route = [], distance = 0) {
     const isValid = route.some((item) => guestNodes.includes(item.toString()));
-    if (isValid) {
+    // debugger
+    if (minRoute && minRoute < distance) {
+      return false;
+    } else if (isValid) {
       if (minRoute > distance || !minRoute) {
         if (route[route.length - 1] === y) {
           minRoute = distance;
@@ -102,6 +105,7 @@ function solution(n, u, v, w, c, guestNodes, x, y) {
   function findRoutes(rCount) {
     const item = routes[rCount];
     const lNode = item.route[item.route.length - 1];
+    // debugger
     if (lNode === y) return;
     const posNextNodes = findNextValidNodes(item.route, lNode);
     if (posNextNodes.length) {
@@ -114,7 +118,8 @@ function solution(n, u, v, w, c, guestNodes, x, y) {
         posNextNodes,
         () => posNextNodes.shift(),
         (r, d) => {
-          item.route.push(r);
+          item.route = r;
+          // item.route.push(r);
           item.distance = d;
           findRoutes(rCount);
         }
