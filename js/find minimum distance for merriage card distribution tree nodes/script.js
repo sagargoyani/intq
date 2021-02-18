@@ -10,7 +10,7 @@ function solution(n, u, v, w, c, guestNodes, x, y) {
 
   let minRoute;
 
-  guestNodes = guestNodes.filter((item) => !(item === x));
+  guestNodes = guestNodes.filter((item) => item !== x);
 
   function validateRoute(route = [], distance = 0) {
     const isValid = route.some((item) => guestNodes.includes(item.toString()));
@@ -187,8 +187,10 @@ function runScript() {
     const element = input[ii];
 
     const { n, u, v, w, c, guestNodes, x, y } = element;
+    const expected = output[ii];
 
     console.log("solution : ", solution(n, u, v, w, c, guestNodes, x, y));
+    console.log("expected : ", expected);
   }
   console.timeEnd("solution");
 }
